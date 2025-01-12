@@ -54,9 +54,9 @@ if week == week1:
         **Sauté Station**
         <br>
         Teriyaki Chicken Stir Fry (S) or Fried Tofu (S)
-        <br> 
+        <br>
         Peas, Cabbage & Peppers
-        <br> 
+        <br>
         Steamed Jasmine Rice
         """, unsafe_allow_html=True)
 
