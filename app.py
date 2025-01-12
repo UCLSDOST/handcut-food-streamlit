@@ -38,8 +38,6 @@ if week == "1":
 
     with col2:
         st.header("column 2")
-        st.write("---")
-
         st.subheader("Monday")
         st.write("**Sauté Station**")
         st.write("Option 1")
