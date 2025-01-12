@@ -2,23 +2,31 @@ import streamlit as st
 
 st.set_page_config(layout="wide")
 
-st.markdown("""
-<style>
-    .stButton button {
-        background-color: transparent;
-        border: 0px solid green;
+# allows menu item to actually be a button
+st.markdown(
+    """
+    <style>
+    button {
+        background: none!important;
+        border: none;
+        padding: 0!important;
+        text-decoration: none;
+        cursor: pointer;
+        border: none !important;
     }
-
-    .stButton button:hover {
-        color: orange;
+    button:hover {
+        text-decoration: none;
+        color: orange !important;
     }
-    
-    .stButton button:focus {
-        background-color: transparent;
+    button:focus {
+        outline: none !important;
+        box-shadow: none !important;
+        color: orange !important;
     }
-
-</style>
-""", unsafe_allow_html=True)
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 st.title('Menu (Mock)')
 st.write("---")
