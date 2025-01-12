@@ -1,80 +1,231 @@
 import streamlit as st
 
+st.set_page_config(layout="wide")
+
 st.title('Menu (Mock)')
 st.write("---")
 
+week1 = "This week" #week of 9/2
+week2 = "Week of 9/9"
+week3 = "Week of 9/16"
+
 week = st.selectbox(
     "Select Week",
-    ("1", "2", "3")
+    (week1, week2, week3)
 )
 
-if week == "1":
+if week == week1:
     with st.container(border=True):
         st.write("Allergen Guide: put info here for vegan / gf etc")
 
     col1, col2 = st.columns(spec=[0.4, 0.6])
 
+    # menu that doesn't change
     with col1:
-        st.header("column 1")
         with st.container(border=True):
-            st.subheader("Deli Station")
-            st.write("sandwich 1")
-            st.write("sandwich 2")
-            st.write("sandwich 3")
-            st.write("sandwich 4")
-            st.write("sandwich 5")
+            st.subheader(":orange[Deli Station]")
+            st.write("Turkey BLT")
+            st.write("Muffaletta Sandwich")
+            st.write("Caprese")
+            st.write("Ham & Swiss")
+            st.write("Tuna Salad")
+            st.write("Grilled Vegetable Ciabatta")
+            st.write("Build Your Own")
         with st.container(border=True):
-            st.subheader("Pizza Station")
-            st.write("pizza 1")
-            st.write("pizza 2")
-            st.write("pizza 3")
+            st.subheader(":orange[Pizza Station]")
+            st.write("Cheese")
+            st.write("Pepperoni or Sausage")
+            st.write("Veggie")
         with st.container(border=True):
-            st.subheader("Grill Station")
-            st.write("grill 1")
-            st.write("grill 2")
-            st.write("grill 3")
+            st.subheader(":orange[Grill Station]")
+            st.write("Grilled Cheese")
+            st.write("Chicken Tenders")
+            st.write("Cheeseburgers")
+            st.write("Hot Dogs")
+            st.write("Seasoned Fries")
+            st.write("Sweet Potato Fries")
 
-
-
+    # weekly menu
     with col2:
-        st.header("column 2")
-        st.subheader("Monday")
-        st.write("**Sauté Station**")
-        st.write("Option 1")
-        st.write("Option 2")
-        st.write("Option 3")
+
+        #day and menu
+        st.subheader(":orange[Monday]")
+        st.write("""
+        **Sauté Station**
+        <br>
+        Teriyaki Chicken Stir Fry (S) or Fried Tofu (S)
+        <br> 
+        Peas, Cabbage & Peppers
+        <br> 
+        Steamed Jasmine Rice
+        """, unsafe_allow_html=True)
+
+        innercol1, innercol2 = st.columns(2)
+        with innercol1:
+            st.write("""
+            **Vegetable**
+            <br>
+            **Sandwich**
+            <br>
+            **Salad Bar**
+            <br>
+            **Breakfast**
+            """, unsafe_allow_html=True)
+        with innercol2:
+            st.write("""
+            Greek Green Beans
+            <br>
+            Italian Beef with Peppers & Onions (G, W)
+            <br>
+            Rotating selection of Greens, Veggies, Proteins & Toppings
+            <br>
+            Eggs or Eggs & Chorizo (E), Jalapeno Breakfast Potatoes & Tortillas
+            """, unsafe_allow_html=True)
         st.write("---")
 
-        st.subheader("Tuesday")
-        st.write("**Sauté Station**")
-        st.write("Option 1")
-        st.write("Option 2")
-        st.write("Option 3")
+        # tuesday
+        st.subheader(":orange[Tuesday]")
+        st.write("""
+        **Sauté Station**
+        <br>
+        Teriyaki Chicken Stir Fry (S) or Fried Tofu (S)
+        <br> 
+        Peas, Cabbage & Peppers
+        <br> 
+        Steamed Jasmine Rice
+        """, unsafe_allow_html=True)
+
+        innercol1, innercol2 = st.columns(2)
+        with innercol1:
+            st.write("""
+            **Vegetable**
+            <br>
+            **Sandwich**
+            <br>
+            **Salad Bar**
+            <br>
+            **Breakfast**
+            """, unsafe_allow_html=True)
+        with innercol2:
+            st.write("""
+            Greek Green Beans
+            <br>
+            Italian Beef with Peppers & Onions (G, W)
+            <br>
+            Rotating selection of Greens, Veggies, Proteins & Toppings
+            <br>
+            Eggs or Eggs & Chorizo (E), Jalapeno Breakfast Potatoes & Tortillas
+            """, unsafe_allow_html=True)
         st.write("---")
 
-        st.subheader("Wednesday")
-        st.write("**Sauté Station**")
-        st.write("Option 1")
-        st.write("Option 2")
-        st.write("Option 3")
+        # wednesday
+        st.subheader(":orange[Wednesday]")
+        st.write("""
+        **Sauté Station**
+        <br>
+        Teriyaki Chicken Stir Fry (S) or Fried Tofu (S)
+        <br> 
+        Peas, Cabbage & Peppers
+        <br> 
+        Steamed Jasmine Rice
+        """, unsafe_allow_html=True)
+
+        innercol1, innercol2 = st.columns(2)
+        with innercol1:
+            st.write("""
+            **Vegetable**
+            <br>
+            **Sandwich**
+            <br>
+            **Salad Bar**
+            <br>
+            **Breakfast**
+            """, unsafe_allow_html=True)
+        with innercol2:
+            st.write("""
+            Greek Green Beans
+            <br>
+            Italian Beef with Peppers & Onions (G, W)
+            <br>
+            Rotating selection of Greens, Veggies, Proteins & Toppings
+            <br>
+            Eggs or Eggs & Chorizo (E), Jalapeno Breakfast Potatoes & Tortillas
+            """, unsafe_allow_html=True)
         st.write("---")
 
-        st.subheader("Thursday")
-        st.write("**Sauté Station**")
-        st.write("Option 1")
-        st.write("Option 2")
-        st.write("Option 3")
+        # thursday
+        st.subheader(":orange[Thursday]")
+        st.write("""
+        **Sauté Station**
+        <br>
+        Teriyaki Chicken Stir Fry (S) or Fried Tofu (S)
+        <br> 
+        Peas, Cabbage & Peppers
+        <br> 
+        Steamed Jasmine Rice
+        """, unsafe_allow_html=True)
+
+        innercol1, innercol2 = st.columns(2)
+        with innercol1:
+            st.write("""
+            **Vegetable**
+            <br>
+            **Sandwich**
+            <br>
+            **Salad Bar**
+            <br>
+            **Breakfast**
+            """, unsafe_allow_html=True)
+        with innercol2:
+            st.write("""
+            Greek Green Beans
+            <br>
+            Italian Beef with Peppers & Onions (G, W)
+            <br>
+            Rotating selection of Greens, Veggies, Proteins & Toppings
+            <br>
+            Eggs or Eggs & Chorizo (E), Jalapeno Breakfast Potatoes & Tortillas
+            """, unsafe_allow_html=True)
         st.write("---")
 
-        st.subheader("Friday")
-        st.write("**Sauté Station**")
-        st.write("Option 1")
-        st.write("Option 2")
-        st.write("Option 3")
+        # friday
+        st.subheader(":orange[Friday]")
+        st.write("""
+        **Sauté Station**
+        <br>
+        Teriyaki Chicken Stir Fry (S) or Fried Tofu (S)
+        <br> 
+        Peas, Cabbage & Peppers
+        <br> 
+        Steamed Jasmine Rice
+        """, unsafe_allow_html=True)
+
+        innercol1, innercol2 = st.columns(2)
+        with innercol1:
+            st.write("""
+            **Vegetable**
+            <br>
+            **Sandwich**
+            <br>
+            **Salad Bar**
+            <br>
+            **Breakfast**
+            """, unsafe_allow_html=True)
+        with innercol2:
+            st.write("""
+            Greek Green Beans
+            <br>
+            Italian Beef with Peppers & Onions (G, W)
+            <br>
+            Rotating selection of Greens, Veggies, Proteins & Toppings
+            <br>
+            Eggs or Eggs & Chorizo (E), Jalapeno Breakfast Potatoes & Tortillas
+            """, unsafe_allow_html=True)
         st.write("---")
 
-elif week == "2":
-    st.write("add info for week 2 here later")
 
-elif week == "3":
-    st.write("add info for week 3 here later")
+elif week == week2:
+    st.header("Coming soon!")
+
+elif week == week3:
+    st.header("Coming soon!")
