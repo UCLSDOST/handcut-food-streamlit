@@ -2,6 +2,32 @@ import streamlit as st
 
 st.set_page_config(layout="wide")
 
+# allows menu item to actually be a button
+st.markdown(
+    """
+    <style>
+    button {
+        background: none!important;
+        border: none;
+        padding: 0!important;
+        text-decoration: none;
+        cursor: pointer;
+        border: none !important;
+    }
+    button:hover {
+        text-decoration: none;
+        color: orange !important;
+    }
+    button:focus {
+        outline: none !important;
+        box-shadow: none !important;
+        color: orange !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 st.title('Menu (Mock)')
 st.write("---")
 
@@ -24,7 +50,9 @@ if week == week1:
     with col1:
         with st.container(border=True):
             st.subheader(":orange[Deli Station]")
-            st.write("Turkey BLT")
+            if st.button("Turkey BLT"):
+                st.switch_page("pages/nutrition.py")
+                st.query_params["menu_item"] = "turkey_blt"
             st.write("Muffaletta Sandwich")
             st.write("Caprese")
             st.write("Ham & Swiss")
