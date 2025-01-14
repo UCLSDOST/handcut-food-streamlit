@@ -2,6 +2,11 @@ import streamlit as st
 
 st.set_page_config(layout="wide")
 
+st.session_state['menu_items'] = {"turkey_blt" : {"name" : "Turkey BLT",
+                                                "calories" : 3000}
+                                }
+if 'menu_item' not in st.session_state:
+    st.session_state['menu_item'] = ""
 # allows menu item to actually be a button
 st.markdown(
     """
@@ -51,8 +56,8 @@ if week == week1:
         with st.container(border=True):
             st.subheader(":orange[Deli Station]")
             if st.button("Turkey BLT"):
-                st.switch_page("pages/nutrition.py")
-                st.query_params["menu_item"] = "turkey_blt"
+                st.session_state['menu_item'] = "turkey_blt"
+                st.page_link("pages/nutrition.py")
             st.write("Muffaletta Sandwich")
             st.write("Caprese")
             st.write("Ham & Swiss")
@@ -257,3 +262,7 @@ elif week == week2:
 
 elif week == week3:
     st.header("Coming soon!")
+
+def main():
+    global_state = gsl.get_global_state()
+
