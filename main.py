@@ -52,6 +52,7 @@ if week == week1:
             st.subheader(":orange[Deli Station]")
             if st.button("Turkey BLT"):
                 st.switch_page("pages/nutrition.py")
+                st.query_params["menu_item"] = "turkey_blt"
             st.write("Muffaletta Sandwich")
             st.write("Caprese")
             st.write("Ham & Swiss")
