@@ -3,7 +3,20 @@ import streamlit as st
 st.set_page_config(layout="wide")
 
 st.session_state['menu_items'] = {"turkey_blt" : {"name" : "Turkey BLT",
-                                                "calories" : 3000}
+                                                  "serving_size" : "1 sandwich",
+                                                  "total_fat" : 20,
+                                                  "saturated_fat" : 20,
+                                                  "calories" : 3000,
+                                                  "station" : "deli"},
+                                  "cheese_pizza" : {"name" : "Cheese Pizza",
+                                                    "calories" : 3000,
+                                                    "station" : "pizza"},
+                                  "sausage_pizza" : {"name" : "Sausage Pizza",
+                                                    "calories" : 3000,
+                                                     "station" : "pizza"},
+                                  "cheeseburger" : {"name" : "Cheeseburger",
+                                                    "calories" : 3000,
+                                                    "station" : "grill"},
                                 }
 if 'menu_item' not in st.session_state:
     st.session_state['menu_item'] = ""
@@ -55,29 +68,25 @@ if week == week1:
     with col1:
         with st.container(border=True):
             st.subheader(":orange[Deli Station]")
-            if st.button("Turkey BLT"):
-                st.session_state['menu_item'] = "turkey_blt"
-                st.page_link("pages/nutrition.py")
-            st.write("Muffaletta Sandwich")
-            st.write("Caprese")
-            st.write("Ham & Swiss")
-            st.write("Tuna Salad")
-            st.write("Grilled Vegetable Ciabatta")
-            st.write("Build Your Own")
+            for key, item in st.session_state.menu_items.items():
+                if item['station'] == "deli":
+                    if st.button(item['name']):
+                        st.session_state['menu_item'] = key
+                        st.switch_page("pages/nutrition.py")
         with st.container(border=True):
             st.subheader(":orange[Pizza Station]")
-            st.write("Cheese")
-            st.write("Pepperoni or Sausage")
-            st.write("Veggie")
+            for key, item in st.session_state.menu_items.items():
+                if item['station'] == "pizza":
+                    if st.button(item['name']):
+                        st.session_state['menu_item'] = key
+                        st.switch_page("pages/nutrition.py")
         with st.container(border=True):
             st.subheader(":orange[Grill Station]")
-            st.write("Grilled Cheese")
-            st.write("Chicken Tenders")
-            st.write("Cheeseburgers")
-            st.write("Hot Dogs")
-            st.write("Seasoned Fries")
-            st.write("Sweet Potato Fries")
-
+            for key, item in st.session_state.menu_items.items():
+                if item['station'] == "grill":
+                    if st.button(item['name']):
+                        st.session_state['menu_item'] = key
+                        st.switch_page("pages/nutrition.py")
     # weekly menu
     with col2:
 

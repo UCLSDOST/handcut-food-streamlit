@@ -1,4 +1,5 @@
 import streamlit as st
+from math import ceil
 from streamlit_star_rating import st_star_rating
 
 menu_item = st.session_state.menu_items[st.session_state["menu_item"]]
@@ -143,8 +144,8 @@ with col1:
 <section class="performance-facts">
   <header class="performance-facts__header">
     <h1 class="performance-facts__title", style="padding:0;">Nutrition Facts</h1>
-    <p>Serving Size 1/2 cup (about 82g)
-      <p>Serving Per Container 8</p>
+    <p>Serving Size {menu_item['serving_size']}
+      <p>Serving Per Container 8 TODO</p>
   </header>
   <table class="performance-facts__table">
     <thead>
@@ -158,11 +159,11 @@ with col1:
       <tr>
         <th colspan="2">
           <b>Calories</b>
-          200
-        </th>
+          {menu_item['calories']}
+            </th>
         <td>
           Calories from Fat
-          130
+          TODO
         </td>
       </tr>
       <tr class="thick-row">
@@ -173,10 +174,10 @@ with col1:
       <tr>
         <th colspan="2">
           <b>Total Fat</b>
-          14g
+          {menu_item['total_fat']}g
         </th>
         <td>
-          <b>22%</b>
+          <b>{ceil(menu_item['total_fat']/78 * 100)}%</b>
         </td>
       </tr>
       <tr>
@@ -184,10 +185,10 @@ with col1:
         </td>
         <th>
           Saturated Fat
-          9g
+          {menu_item['saturated_fat']}g
         </th>
         <td>
-          <b>22%</b>
+          <b>{ceil(menu_item['saturated_fat'] / 22 * 100)}%</b>
         </td>
       </tr>
       <tr>
@@ -195,7 +196,7 @@ with col1:
         </td>
         <th>
           Trans Fat
-          0g
+          TODO
         </th>
         <td>
         </td>
@@ -203,28 +204,28 @@ with col1:
       <tr>
         <th colspan="2">
           <b>Cholesterol</b>
-          55mg
+          TODO
         </th>
         <td>
-          <b>18%</b>
+          <b>TODO</b>
         </td>
       </tr>
       <tr>
         <th colspan="2">
           <b>Sodium</b>
-          40mg
+          TODO
         </th>
         <td>
-          <b>2%</b>
+          <b>TODO</b>
         </td>
       </tr>
       <tr>
         <th colspan="2">
           <b>Total Carbohydrate</b>
-          17g
+          TODO
         </th>
         <td>
-          <b>6%</b>
+          <b>TODO</b>
         </td>
       </tr>
       <tr>
@@ -232,10 +233,10 @@ with col1:
         </td>
         <th>
           Dietary Fiber
-          1g
+          TODO
         </th>
         <td>
-          <b>4%</b>
+          <b>TODO</b>
         </td>
       </tr>
       <tr>
@@ -243,7 +244,7 @@ with col1:
         </td>
         <th>
           Sugars
-          14g
+          TODO
         </th>
         <td>
         </td>
@@ -251,7 +252,7 @@ with col1:
       <tr class="thick-end">
         <th colspan="2">
           <b>Protein</b>
-          3g
+          TODO
         </th>
         <td>
         </td>
