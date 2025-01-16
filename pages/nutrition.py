@@ -12,7 +12,7 @@ st.header(menu_item["name"])
 col1, col2 = st.columns([0.4, 0.6])
 
 with col1:
-    with st.container(border=True):
+    with st.container(border=False):
         st.write(
             """
             <style>

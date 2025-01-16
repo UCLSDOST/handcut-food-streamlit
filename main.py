@@ -73,6 +73,12 @@ if week == week1:
                     if st.button(item['name']):
                         st.session_state['menu_item'] = key
                         st.switch_page("pages/nutrition.py")
+
+            # for item in station_map['deli']:
+            #     if st.button(item['name']):
+            #         st.session_state['menu_item'] = key
+            #         st.switch_page("pages/nutrition.py")
+
         with st.container(border=True):
             st.subheader(":orange[Pizza Station]")
             for key, item in st.session_state.menu_items.items():
