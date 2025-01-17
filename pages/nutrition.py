@@ -1,8 +1,40 @@
 import streamlit as st
 from math import ceil
-from streamlit_star_rating import st_star_rating
+import pickle
 
 menu_item = st.session_state.menu_items[st.session_state["menu_item"]]
+# st.query_params['item'] = menu_item["name"]
+
+# functions for pickle stuff
+
+# back up ratings for testing
+# keys are of the form # stars: # ratings for that num of stars
+# ratings = {"Turkey BLT": {5:13, 4:12, 3:11, 2:10, 1:9},
+#         "cheese_pizza" : {5:23, 4:22, 3:21, 2:20, 1:19},
+#         "sausage_pizza" : {5:33, 4:32, 3:31, 2:30, 1:29},
+#         "cheeseburger" : {5:43, 4:42, 3:41, 2:40, 1:39},
+#         }
+
+def storeData(ratings_dict: dict[str, dict[int, int]]):
+    ratings_file = open('example_ratings', 'wb')
+    pickle.dump(ratings_dict, ratings_file)
+    ratings_file.close()
+def loadData() -> dict :
+    ratings_file = open('example_ratings', 'rb')
+    ratings = pickle.load(ratings_file)
+    # for keys in ratings:
+    #     print(keys, '=>', ratings[keys])
+    ratings_file.close()
+    return ratings
+
+def avg_rating(ratings: dict[int, int]) -> [float, int]:
+    review_sum = 0 #i cant think of a better variable name rn
+    num_reviews_sum = 0
+    for key in ratings:
+        review_sum += ratings[key]*key
+        num_reviews_sum += ratings[key]
+    return review_sum, num_reviews_sum
+
 
 st.set_page_config(layout="wide")
 st.title("Nutrition and Reviews")
@@ -266,18 +298,20 @@ with col1:
             """,
             unsafe_allow_html=True,
         )
-        
     with st.container():
         if st.button("back"):
             st.switch_page("main.py")
-
 with col2:
     with st.container():
+        ratings = loadData()
         st.subheader("Leave a rating!")
-        stars = st_star_rating(label="", maxValue=5, defaultValue=3, key="rating")
-    with st.container(border=True):
-        st.write("This sandwich is good")
-    with st.container(border=True):
-        st.write("Tasty!")
-    with st.container(border=True):
-        st.write("I didn't like this")
+        selected = st.feedback("stars") + 1
+        # see streamlit documentation to see if we can use the named parameter "key" to
+        # prevent multiple ratings without refreshing the page
+        st.write(f"You selected {selected} star(s)")
+        st.write(":red[TO FIX: EVERY TIME YOU CHANGE THE STARS IT'S ADDED TO THE RECORD]")
+
+        # changing the ratings dict
+        ratings[menu_item["name"]][selected] += 1
+        st.write(f" {selected} : {ratings[menu_item["name"]][selected]}")
+        storeData(ratings)
